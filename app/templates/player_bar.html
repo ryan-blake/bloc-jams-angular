@@ -1,11 +1,12 @@
 <section class="player-bar">
     <div class="container">
-      <div class="control-group main-controls">
+      <div class="control-group main-controls" ng-mouseover="hovered = true" ng-mouseleave="hovered = false">
           <a class="previous">
               <span class="ion-skip-backward"></span>
           </a>
-          <a class="play-pause">
-              <span class="ion-play"></span>
+          <a class="play-pause" ng-show="!hovered && !playing"><span class="ion-play"></span>
+          <a class="play-pause" ng-show="hovered && !playing"><span class="ion-pause"></span>
+
           </a>
           <a class="next">
               <span class="ion-skip-forward"></span>
