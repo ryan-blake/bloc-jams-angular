@@ -44,7 +44,6 @@
       }
         return eachAlbum;
     };
-
     return Fixtures;
 }
 
