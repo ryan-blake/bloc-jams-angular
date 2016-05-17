@@ -32,6 +32,11 @@
      font-size: 1.5rem;
  }
 
+ .album-view-details .album-view-label {
+     font-weight: 300;
+     font-size: 0.75rem;
+ }
+
  .album-view-details .album-view-release-info {
      font-weight: 300;
      font-size: 0.75rem;
