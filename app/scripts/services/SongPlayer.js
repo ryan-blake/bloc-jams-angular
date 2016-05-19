@@ -1,4 +1,3 @@
-
 (function() {
   function SongPlayer() {
     var SongPlayer = {};
@@ -21,6 +20,10 @@ var setSong = function(song) {
         currentSong.playing = null;
     }
 
+    var playSong = function(song) {
+        currentBuzzObject.play();
+        song.playing = true;
+    };
 
     var currentBuzzObject = new buzz.sound(song.audioUrl, {
        formats: ['mp3'],
