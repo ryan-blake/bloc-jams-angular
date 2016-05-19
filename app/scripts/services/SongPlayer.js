@@ -20,42 +20,40 @@ var setSong = function(song) {
         currentSong.playing = null;
     }
 
-    var playSong = function(song) {
-        currentBuzzObject.play();
-        song.playing = true;
-    };
+    currentBuzzObject = new buzz.sound(song.audioUrl, {
+      formats: ['mp3'],
+      preload: true
+    });
 
-    var currentBuzzObject = new buzz.sound(song.audioUrl, {
-       formats: ['mp3'],
-       preload: true
-      });
-     currentSong = song;
-   };
+   currentSong = song;
+};
 
+  var playSong = function(song) {
+    currentBuzzObject.play();
+    song.playing = true;
+  }
 
-     SongPlayer.play = function(song) {
+ SongPlayer.play = function(song) {
+   if (currentSong !== song) {
+       setSong(song);
+       playSong(song);
 
-       if (currentSong !== song) {
-           setSong(song);
-           currentBuzzObject.play();
-           song.playing = true;
-
-         } else if (currentSong === song) {
-             if (currentBuzzObject.isPaused()) {
-                 currentBuzzObject.play();
-             }
+     } else if (currentSong === song) {
+         if (currentBuzzObject.isPaused()) {
+          playSong(song);
          }
-     };
+     }
+ };
 
-     SongPlayer.pause = function(song) {
-         currentBuzzObject.pause();
-         song.playing = false;
-     };
+ SongPlayer.pause = function(song) {
+     currentBuzzObject.pause();
+     song.playing = false;
+ };
 
-     return SongPlayer;
-    }
+ return SongPlayer;
+}
 
-    angular
-        .module('blocJams')
-        .factory('SongPlayer', SongPlayer);
+angular
+    .module('blocJams')
+    .factory('SongPlayer', SongPlayer);
 })();
