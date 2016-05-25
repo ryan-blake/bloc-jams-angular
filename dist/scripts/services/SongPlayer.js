@@ -4,6 +4,7 @@
     var currentAlbum = Fixtures.getAlbum();
 
 
+
     var getSongIndex = function(song) {
        return currentAlbum.songs.indexOf(song);
     };
@@ -17,6 +18,7 @@
  SongPlayer.currentTime = null;
 
 
+ SongPlayer.volume = 60;
 /**
 * @desc Buzz object audio file
 * @type {Object}
@@ -118,6 +120,13 @@ var setSong = function(song) {
           playSong(song);
       }
   };
+
+  SongPlayer.setVolume = function(volume) {
+    if (currentBuzzObject) {
+        currentBuzzObject.setVolume(volume);
+    }
+    SongPlayer.volume = volume;
+};
 
  return SongPlayer;
 }
